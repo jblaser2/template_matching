@@ -1,0 +1,56 @@
+********************************************************************************
+*                                 pyTME v0.2.1                                 *
+********************************************************************************
+Resampling template to [14.076 14.076 14.076]. Consider providing a template with the same sampling rate as the target.
+
+> Target
+  - Initial Shape:       (400, 960, 928)
+  - Sampling Rate:       (14.08, 14.08, 14.08)
+  - Final Shape:         (400, 960, 928)
+
+> Template
+  - Initial Shape:       (57, 95, 57)
+  - Sampling Rate:       (14.08, 14.08, 14.08)
+  - Final Shape:         (125, 125, 125)
+
+> Template Mask
+  - Inital Shape:        (57, 95, 57)
+  - Sampling Rate:       (14.08, 14.08, 14.08)
+  - Final Shape:         (125, 125, 125)
+
+--------------------------------------------------------------------------------
+
+> Template Matching Options
+  - CPU Cores:             4
+  - Run on GPU:            True [N=4]
+  - Use Mixed Precision:   False
+  - Assigned Memory [MB]:  64469.0 [out of 67155.0]
+  - Temporary Directory:   /tmp
+  - Extend Fourier Grid:   False
+  - Extend Target Edges:   True
+  - Interpolation Order:   3
+  - Score:                 FLCSphericalMask
+  - Setup Function:        <function 'tme.matching_exhaustive.flcSphericalMask_setup'>
+  - Scoring Function:      <function 'tme.matching_exhaustive.corr_scoring'>
+  - Angular Sampling:      5.0 [53256 rotations]
+  - Scramble Template:     False
+  - Target Splits:         0:1, 1:2, 2:2 [N=4]
+
+> Filters
+  - Smooth Pass:           True
+
+> Score Analysis Options
+  - Analyzer:              <class 'tme.analyzer.MaxScoreOverRotations'>
+  - score_threshold:       0
+  - number_of_peaks:       1000
+  - convolution_mode:      valid
+  - use_memmap:            False
+
+--------------------------------------------------------------------------------
+
+Distributing 4 splits on 4 jobs each using 1 core.
+Running Template Matching. This might take a while ...
+/home/ejl62/.conda/envs/pytme/lib/python3.11/site-packages/joblib/externals/loky/process_executor.py:752: UserWarning: A worker stopped while some jobs were given to the executor. This can be caused by a too short worker timeout or by a memory leak.
+  warnings.warn(
+
+Runtime real: 4958.027s user: 19832.108s.

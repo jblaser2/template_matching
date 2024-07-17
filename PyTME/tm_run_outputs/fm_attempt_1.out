@@ -1,0 +1,131 @@
+********************************************************************************
+*                                 pyTME v0.2.0                                 *
+********************************************************************************
+Resampling template to [14.076 14.076 14.076]. Consider providing a template with the same sampling rate as the target.
+
+> Target
+  - Initial Shape:       (400, 960, 928)
+  - Sampling Rate:       (14.08, 14.08, 14.08)
+  - Final Shape:         (400, 960, 928)
+
+> Template
+  - Initial Shape:       (124, 124, 124)
+  - Sampling Rate:       (14.08, 14.08, 14.08)
+  - Final Shape:         (244, 244, 244)
+
+> Template Mask
+  - Inital Shape:        (124, 124, 124)
+  - Sampling Rate:       (14.08, 14.08, 14.08)
+  - Final Shape:         (244, 244, 244)
+
+--------------------------------------------------------------------------------
+
+> Template Matching Options
+  - CPU Cores:             2
+  - Run on GPU:            True [N=2]
+  - Use Mixed Precision:   False
+  - Assigned Memory [MB]:  28553.0 [out of 33592.0]
+  - Temporary Directory:   /tmp
+  - Extend Fourier Grid:   False
+  - Extend Target Edges:   True
+  - Interpolation Order:   3
+  - Score:                 FLCSphericalMask
+  - Setup Function:        <function 'tme.matching_exhaustive.flcSphericalMask_setup'>
+  - Scoring Function:      <function 'tme.matching_exhaustive.corr_scoring'>
+  - Angular Sampling:      1.0 [207576 rotations]
+  - Scramble Template:     False
+  - Target Splits:         0:2, 1:3, 2:2 [N=12]
+
+> Filters
+  - Smooth Pass:           True
+
+> Score Analysis Options
+  - Analyzer:              <class 'tme.analyzer.MaxScoreOverRotations'>
+  - score_threshold:       0
+  - number_of_peaks:       1000
+  - convolution_mode:      valid
+  - use_memmap:            False
+
+--------------------------------------------------------------------------------
+
+Distributing 12 splits on 2 jobs each using 1 core.
+Running Template Matching. This might take a while ...
+  File "/home/ejl62/.conda/envs/pytme/lib/python3.11/site-packages/tme/matching_exhaustive.py", line 1369, in inner_function
+    return_value = func(shared_memory_handler=smh, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ejl62/.conda/envs/pytme/lib/python3.11/site-packages/tme/matching_exhaustive.py", line 1461, in scan
+    setup = matching_setup(
+            ^^^^^^^^^^^^^^^
+  File "/home/ejl62/.conda/envs/pytme/lib/python3.11/site-packages/tme/matching_exhaustive.py", line 510, in flcSphericalMask_setup
+    target_pad = backend.topleft_pad(target, fast_shape)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ejl62/.conda/envs/pytme/lib/python3.11/site-packages/tme/backends/npfftw_backend.py", line 325, in topleft_pad
+    b = self.preallocate_array(shape, arr.dtype)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ejl62/.conda/envs/pytme/lib/python3.11/site-packages/tme/backends/cupy_backend.py", line 100, in preallocate_array
+    arr = self._array_backend.zeros(shape, dtype=dtype)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ejl62/.conda/envs/pytme/lib/python3.11/site-packages/cupy/_creation/basic.py", line 248, in zeros
+    a = cupy.ndarray(shape, dtype, order=order)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "cupy/_core/core.pyx", line 132, in cupy._core.core.ndarray.__new__
+  File "cupy/_core/core.pyx", line 220, in cupy._core.core._ndarray_base._init
+  File "cupy/cuda/memory.pyx", line 738, in cupy.cuda.memory.alloc
+  File "cupy/cuda/memory.pyx", line 1424, in cupy.cuda.memory.MemoryPool.malloc
+  File "cupy/cuda/memory.pyx", line 1445, in cupy.cuda.memory.MemoryPool.malloc
+  File "cupy/cuda/memory.pyx", line 1116, in cupy.cuda.memory.SingleDeviceMemoryPool.malloc
+  File "cupy/cuda/memory.pyx", line 1137, in cupy.cuda.memory.SingleDeviceMemoryPool._malloc
+  File "cupy/cuda/memory.pyx", line 1382, in cupy.cuda.memory.SingleDeviceMemoryPool._try_malloc
+  File "cupy/cuda/memory.pyx", line 1385, in cupy.cuda.memory.SingleDeviceMemoryPool._try_malloc
+Out of memory allocating 1,463,132,160 bytes (allocated so far: 1,542,049,792 bytes).
+joblib.externals.loky.process_executor._RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "/home/ejl62/.conda/envs/pytme/lib/python3.11/site-packages/joblib/externals/loky/process_executor.py", line 463, in _process_worker
+    r = call_item()
+        ^^^^^^^^^^^
+  File "/home/ejl62/.conda/envs/pytme/lib/python3.11/site-packages/joblib/externals/loky/process_executor.py", line 291, in __call__
+    return self.fn(*self.args, **self.kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ejl62/.conda/envs/pytme/lib/python3.11/site-packages/joblib/parallel.py", line 598, in __call__
+    return [func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ejl62/.conda/envs/pytme/lib/python3.11/site-packages/joblib/parallel.py", line 598, in <listcomp>
+    return [func(*args, **kwargs)
+            ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ejl62/.conda/envs/pytme/lib/python3.11/site-packages/tme/matching_exhaustive.py", line 42, in _run_inner
+    return scan(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/home/ejl62/.conda/envs/pytme/lib/python3.11/site-packages/tme/matching_exhaustive.py", line 1374, in inner_function
+    handle_traceback(last_type, last_value, last_traceback)
+  File "/home/ejl62/.conda/envs/pytme/lib/python3.11/site-packages/tme/matching_utils.py", line 49, in handle_traceback
+    raise Exception(last_value)
+Exception: Out of memory allocating 1,463,132,160 bytes (allocated so far: 1,542,049,792 bytes).
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ejl62/pyTME/scripts/match_template.py", line 1019, in <module>
+    main()
+  File "/home/ejl62/pyTME/scripts/match_template.py", line 984, in main
+    candidates = scan_subsets(
+                 ^^^^^^^^^^^^^
+  File "/home/ejl62/.conda/envs/pytme/lib/python3.11/site-packages/tme/matching_exhaustive.py", line 1651, in scan_subsets
+    results = Parallel(n_jobs=outer_jobs)(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ejl62/.conda/envs/pytme/lib/python3.11/site-packages/joblib/parallel.py", line 2007, in __call__
+    return output if self.return_generator else list(output)
+                                                ^^^^^^^^^^^^
+  File "/home/ejl62/.conda/envs/pytme/lib/python3.11/site-packages/joblib/parallel.py", line 1650, in _get_outputs
+    yield from self._retrieve()
+  File "/home/ejl62/.conda/envs/pytme/lib/python3.11/site-packages/joblib/parallel.py", line 1754, in _retrieve
+    self._raise_error_fast()
+  File "/home/ejl62/.conda/envs/pytme/lib/python3.11/site-packages/joblib/parallel.py", line 1789, in _raise_error_fast
+    error_job.get_result(self.timeout)
+  File "/home/ejl62/.conda/envs/pytme/lib/python3.11/site-packages/joblib/parallel.py", line 745, in get_result
+    return self._return_or_raise()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ejl62/.conda/envs/pytme/lib/python3.11/site-packages/joblib/parallel.py", line 763, in _return_or_raise
+    raise self._result
+Exception: Out of memory allocating 1,463,132,160 bytes (allocated so far: 1,542,049,792 bytes).

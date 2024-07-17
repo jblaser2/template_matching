@@ -1,0 +1,79 @@
+
+********************************************************************************
+*                                 pyTME v0.2.1                                 *
+********************************************************************************
+Resampling template to [14.076 14.076 14.076]. Consider providing a template with the same sampling rate as the target.
+
+> Target
+  - Initial Shape:       (400, 960, 928)
+  - Sampling Rate:       (14.08, 14.08, 14.08)
+  - Final Shape:         (400, 960, 928)
+
+> Template
+  - Initial Shape:       (57, 95, 57)
+  - Sampling Rate:       (14.08, 14.08, 14.08)
+  - Final Shape:         (125, 125, 125)
+
+> Template Mask
+  - Inital Shape:        (57, 95, 57)
+  - Sampling Rate:       (14.08, 14.08, 14.08)
+  - Final Shape:         (125, 125, 125)
+
+--------------------------------------------------------------------------------
+Traceback (most recent call last):
+  File "cupy_backends/cuda/_softlink.pyx", line 25, in cupy_backends.cuda._softlink.SoftLink.__init__
+  File "/home/ejl62/.conda/envs/pytme/lib/python3.11/ctypes/__init__.py", line 376, in __init__
+    self._handle = _dlopen(self._name, mode)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: libnvrtc.so.12: cannot open shared object file: No such file or directory
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ejl62/pyTME/scripts/match_template.py", line 1133, in <module>
+    main()
+  File "/home/ejl62/pyTME/scripts/match_template.py", line 972, in main
+    matching_data = MatchingData(
+                    ^^^^^^^^^^^^^
+  File "/home/ejl62/.conda/envs/pytme/lib/python3.11/site-packages/tme/matching_data.py", line 79, in __init__
+    self._set_batch_dimension()
+  File "/home/ejl62/.conda/envs/pytme/lib/python3.11/site-packages/tme/matching_data.py", line 389, in _set_batch_dimension
+    target_shape = backend.full(
+                   ^^^^^^^^^^^^^
+  File "/home/ejl62/.conda/envs/pytme/lib/python3.11/site-packages/tme/backends/npfftw_backend.py", line 152, in full
+    return self._array_backend.full(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ejl62/.conda/envs/pytme/lib/python3.11/site-packages/cupy/_creation/basic.py", line 325, in full
+    cupy.copyto(a, fill_value, casting='unsafe')
+  File "/home/ejl62/.conda/envs/pytme/lib/python3.11/site-packages/cupy/_manipulation/basic.py", line 92, in copyto
+    _core.elementwise_copy(src, dst)
+  File "cupy/_core/_kernel.pyx", line 1375, in cupy._core._kernel.ufunc.__call__
+  File "cupy/_core/_kernel.pyx", line 1402, in cupy._core._kernel.ufunc._get_ufunc_kernel
+  File "cupy/_core/_kernel.pyx", line 1082, in cupy._core._kernel._get_ufunc_kernel
+  File "cupy/_core/_kernel.pyx", line 94, in cupy._core._kernel._get_simple_elementwise_kernel
+  File "cupy/_core/_kernel.pyx", line 82, in cupy._core._kernel._get_simple_elementwise_kernel_from_code
+  File "cupy/_core/core.pyx", line 2258, in cupy._core.core.compile_with_cache
+  File "/home/ejl62/.conda/envs/pytme/lib/python3.11/site-packages/cupy/cuda/compiler.py", line 484, in _compile_module_with_cache
+    return _compile_with_cache_cuda(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ejl62/.conda/envs/pytme/lib/python3.11/site-packages/cupy/cuda/compiler.py", line 499, in _compile_with_cache_cuda
+    arch = _get_arch()
+           ^^^^^^^^^^^
+  File "cupy/_util.pyx", line 64, in cupy._util.memoize.decorator.ret
+  File "/home/ejl62/.conda/envs/pytme/lib/python3.11/site-packages/cupy/cuda/compiler.py", line 148, in _get_arch
+    nvrtc_max_compute_capability = _get_max_compute_capability()
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "cupy/_util.pyx", line 64, in cupy._util.memoize.decorator.ret
+  File "/home/ejl62/.conda/envs/pytme/lib/python3.11/site-packages/cupy/cuda/compiler.py", line 126, in _get_max_compute_capability
+    major, minor = _get_nvrtc_version()
+                   ^^^^^^^^^^^^^^^^^^^^
+  File "/home/ejl62/.conda/envs/pytme/lib/python3.11/site-packages/cupy/cuda/compiler.py", line 115, in _get_nvrtc_version
+    _nvrtc_version = nvrtc.getVersion()
+                     ^^^^^^^^^^^^^^^^^^
+  File "cupy_backends/cuda/libs/nvrtc.pyx", line 56, in cupy_backends.cuda.libs.nvrtc.getVersion
+  File "cupy_backends/cuda/libs/nvrtc.pyx", line 57, in cupy_backends.cuda.libs.nvrtc.getVersion
+  File "cupy_backends/cuda/libs/_cnvrtc.pxi", line 72, in cupy_backends.cuda.libs.nvrtc.initialize
+  File "cupy_backends/cuda/libs/_cnvrtc.pxi", line 76, in cupy_backends.cuda.libs.nvrtc._initialize
+  File "cupy_backends/cuda/libs/_cnvrtc.pxi", line 143, in cupy_backends.cuda.libs.nvrtc._get_softlink
+  File "cupy_backends/cuda/_softlink.pyx", line 32, in cupy_backends.cuda._softlink.SoftLink.__init__
+RuntimeError: CuPy failed to load libnvrtc.so.12: OSError: libnvrtc.so.12: cannot open shared object file: No such file or directory
