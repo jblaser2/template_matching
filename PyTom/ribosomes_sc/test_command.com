@@ -1,0 +1,10 @@
+$batchruntomo -StandardInput
+NamingStyle	0
+CheckFile	batchAug19-143019.cmds
+CPUMachineList	localhost:64
+NiceValue	15
+EndingStep	6.0
+EtomoDebug	0
+DirectiveFile	/mnt/HDD3/sma_2021-08_16/rec/sma2021-08-16-77/batchAug19-143019_Vibrio_8_16_074_-0.0.adoc
+RootName	Vibrio_8_16_074_-0.0
+CurrentLocation	/mnt/HDD3/sma_2021-08_16/rec/sma2021-08-16-77

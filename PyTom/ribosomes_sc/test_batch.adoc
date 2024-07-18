@@ -1,0 +1,14 @@
+setupset.systemTemplate = /usr/local/imod_4.11.6/SystemTemplate/cryoSample.adoc
+runtime.Preprocessing.any.removeXrays = 1
+comparam.prenewst.newstack.BinByFactor = 1
+runtime.Fiducials.any.trackingMethod = 0
+runtime.Fiducials.any.seedingMethod = 3
+setupset.copyarg.gold = 10
+comparam.autofidseed.autofidseed.TargetNumberOfBeads = 40
+comparam.xcorr_pt.tiltxcorr.SizeOfPatchesXandY = 
+runtime.AlignedStack.any.binByFactor = 2
+runtime.Reconstruction.any.doBackprojAlso = 1
+comparam.tilt.tilt.FakeSIRTiterations = 5
+comparam.tilt.tilt.THICKNESS = 1200
+runtime.Positioning.any.thickness = 1200
+runtime.AlignedStack.any.linearInterpolation = 0
