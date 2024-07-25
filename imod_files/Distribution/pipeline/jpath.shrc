@@ -1,0 +1,26 @@
+# Sample pipeline initialization script for Processing computer
+# specify the paths in this file if they are not already in users' PATH
+# variable $IMOD_DIR will be used in pipeline code, so it must be defined for all users' accounts. please define it here
+#         if it's not already defined automatically during IMOD installation.
+# variable $BRT_IMOD_DIR is optional. it's used only if running Batchruntomo with a different version of main IMOD
+
+# Assume the pipeline code is under /software/pipeline/
+
+export IMOD_DIR=/software/imod_4.10.49
+export BRT_IMOD_DIR=/software/imod_4.8.47
+
+# Add the following to $PATH:
+if [ -z "$PATH" ]; then
+  export PATH="$IMOD_DIR/bin:/software/MPlayer-1.1/bin:/software/ffmpeg/bin:/software/EMAN2/bin:/software/pipeline/Patch"
+else
+  export PATH="$IMOD_DIR/bin:/software/MPlayer-1.1/bin:/software/ffmpeg/bin:/software/EMAN2/bin:/software/pipeline/Patch:$PATH"
+fi
+
+# Add the following to $LD_LIBRARY_PATH:
+if [ -z "$LD_LIBRARY_PATH" ]; then
+  export LD_LIBRARY_PATH="$IMOD_DIR/lib"
+else
+  export LD_LIBRARY_PATH="$IMOD_DIR/lib:$LD_LIBRARY_PATH"
+fi
+
+#alias runpipeline="db3_start.py"
