@@ -2,7 +2,7 @@
 
 #SBATCH --time=00:30:00 # walltime
 
-#SBATCH --ntasks=20 # number of processor cores (i.e. tasks)
+#SBATCH --ntasks=2 # number of processor cores (i.e. tasks)
 
 #SBATCH --nodes=1 # number of nodes
 
@@ -27,4 +27,9 @@ output_path="/home/ejl62/template_matching_shared/reconstruction_test"
 root_name="Bdel_Hyle_0010002.mrc"
 direct_file=/home/ejl62/template_matching/ribosomes_sc/test_batch.adoc 
 
-batchruntomo -di "$direct_file" -gpus 1 -cpus 20 
+batchruntomo -di "$direct_file" \
+    -root "$root_name" \
+    -current "$tomogram_path" \
+    -deliever "$output_path" \
+    -gpus 1 \
+    -cpus 2 
