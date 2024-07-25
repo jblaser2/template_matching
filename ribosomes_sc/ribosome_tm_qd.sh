@@ -51,17 +51,14 @@ pytom_match_template.py \
  -t /home/ejl62/ImageAI/template-matching/PyTom/tm_tutorial/templates/60S.mrc \
  -m /home/ejl62/ImageAI/template-matching/PyTom/tm_tutorial/templates/mask_60S.mrc \
  -v /home/ejl62/template_matching_shared/pytom_tutorial/dataset/tomo200528_100.mrc \
- -d /home/ejl62/template_matching_shared/pytom_tutorial/results_60S \
+ -d /home/ejl62/template_matching_shared/qd_tm_test \
  --particle-diameter 300 \
- -a /home/ejl62/template_matching_shared/pytom_tutorial/dataset/tomo200528_100.rawtlt \
- --per-tilt-weighting \
+ -a -60 60 \
  --low-pass 35 \
- --defocus /home/ejl62/template_matching_shared/pytom_tutorial/dataset/tomo200528_100.defocus \
  --amplitude 0.08 \
  --spherical 2.7 \
  --voltage 200 \
  --tomogram-ctf-model phase-flip \
- --dose-accumulation /home/ejl62/template_matching_shared/pytom_tutorial/dataset/tomo200528_100_dose.txt \
  --random-phase \
  -g 0
 
@@ -72,4 +69,6 @@ pytom_match_template.py \
  --bins 16 \
  --crop-plot  > /home/ejl62/template_matching_shared/pytom_tutorial/results_60S/tomo200528_100_roc.log
 
- pytom_extract_candidates.py -j /home/ejl62/template_matching_shared/pytom_tutorial/results_60S/tomo200528_100_job.json -n 300 -r 8
+ pytom_extract_candidates.py -j /home/ejl62/template_matching_shared/pytom_tutorial/results_60S/tomo200528_100_job.json \
+ -n 300 \
+ -r 8
