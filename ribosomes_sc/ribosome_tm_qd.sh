@@ -44,7 +44,7 @@ pytom_create_mask.py \
  -o /home/ejl62/template_matching_shared/pytom/pytom_tutorial/templates/mask_60S.mrc \
  --voxel-size 13.79 \
  --radius 10 \
- --sigma 1 &
+ --sigma 1
   
 pytom_match_template.py \
  -t /home/ejl62/template_matching_shared/pytom/pytom_tutorial/templates/60S.mrc \
@@ -73,5 +73,5 @@ if [ $? -eq 0 ]; then
     -n 300 \
     -r 8
  else 
-    echo "Template matching failed"
+    echo "Shot through the heart, and you're to blame. Template matching failed again."
  fi
