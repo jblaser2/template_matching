@@ -30,6 +30,5 @@ direct_file=/home/ejl62/template_matching/ribosomes_sc/test_batch.adoc
 batchruntomo -di "$direct_file" \
     -root "$root_name" \
     -current "$tomogram_path" \
-    -deliver "$output_path" \
-    -gpus 1 \
-    -cpus 2 
+    -gpus Linux:1 \
+    -cpus Linux:2 
