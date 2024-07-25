@@ -57,15 +57,19 @@ pytom_match_template.py \
  --voltage 200 \
  --tomogram-ctf-model phase-flip \
  --random-phase \
- -g 0 &
+ -g 0
 
- pytom_estimate_roc.py \
- -j /home/ejl62/template_matching_shared/qd_tm_test_results/tomo200528_100_job.json \
- -n 800 \
- -r 8 \
- --bins 16 \
- --crop-plot  > /home/ejl62/template_matching_shared/qd_tm_test_results/tomo200528_100_roc.log
+if [ $? -eq 0 ]; then
+    pytom_estimate_roc.py \
+    -j /home/ejl62/template_matching_shared/qd_tm_test_results/tomo200528_100_job.json \
+    -n 800 \
+    -r 8 \
+    --bins 16 \
+    --crop-plot  > /home/ejl62/template_matching_shared/qd_tm_test_results/tomo200528_100_roc.log
 
- pytom_extract_candidates.py -j /home/ejl62/template_matching_shared/qd_tm_test_results/tomo200528_100_job.json \
- -n 300 \
- -r 8
+    pytom_extract_candidates.py -j /home/ejl62/template_matching_shared/qd_tm_test_results/tomo200528_100_job.json \
+    -n 300 \
+    -r 8
+ else 
+    echo "Template matching failed"
+ fi
