@@ -22,9 +22,9 @@ export LD_LIBRARY_PATH=/apps/spack/root/opt/spack/linux-rhel9-haswell/gcc-13.2.0
 
 # LOAD MODULES, INSERT CODE, AND RUN YOUR PROGRAMS HERE
 
-tomogram_path="/home/ejl62/fsl_groups/grp_tomo_db1_d1/nobackup/archive/TomoDB1_d1/FlagellarMotor_P1/Hylemonella\ gracilis/yc2013-01-03-1"
+tomogram_path="/home/ejl62/fsl_groups/grp_tomo_db1_d2/nobackup/archive/TomoDB1_d2/FlagellarMotor_P2/Opitutus_terrae/mpa2009-09-10-55/"
 output_path="/home/ejl62/template_matching_shared/reconstruction_test"
-root_name="Bdel_Hyle_0010002.mrc"
+root_name="09sep10b_090409MP22_016"
 direct_file=/home/ejl62/template_matching/ribosomes_sc/test_batch.adoc 
 
 batchruntomo -di "$direct_file" \
