@@ -1,4 +1,5 @@
 setupset.systemTemplate = /home/ejl62/Downloads/imod_4.11.25/SystemTemplate/cryoSample.adoc
+setupset.copyarg.rotation = 20
 runtime.Preprocessing.any.removeXrays = 1
 comparam.prenewst.newstack.BinByFactor = 1
 runtime.Fiducials.any.trackingMethod = 0
