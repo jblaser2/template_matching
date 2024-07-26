@@ -2,7 +2,7 @@
 
   
 
-#SBATCH --time=1:00:00 # walltime
+#SBATCH --time=0:15:00 # walltime
 
 #SBATCH --ntasks=1 # number of processor cores (i.e. tasks)
 
@@ -15,6 +15,8 @@
 #SBATCH --export=NONE
 
 #SBATCH --mem 10G
+
+#SBATCH --job-name=qdtm_45
 
   
 
@@ -30,29 +32,13 @@ module load cuda
 
 source activate pytom
 
-pytom_create_template.py \
- -i /home/ejl62/ImageAI/template-matching/PyTom/tm_tutorial/templates/6qzp_60S.mrc \
- -o /home/ejl62/template_matching_shared/pytom/pytom_tutorial/templates/60S.mrc \
- --input-voxel 1.724 \
- --output-voxel 13.79 \
- --center \
- --invert \
- -b 60
-
-pytom_create_mask.py \
- -b 60 \
- -o /home/ejl62/template_matching_shared/pytom/pytom_tutorial/templates/mask_60S.mrc \
- --voxel-size 13.79 \
- --radius 10 \
- --sigma 1
-  
 pytom_match_template.py \
- -t /home/ejl62/template_matching_shared/pytom/pytom_tutorial/templates/60S.mrc \
- -m /home/ejl62/template_matching_shared/pytom/pytom_tutorial/templates/mask_60S.mrc \
- -v /home/ejl62/template_matching_shared/pytom/pytom_tutorial/dataset/tomo200528_100.mrc \
- -d /home/ejl62/template_matching_shared/qd_tm_test_results \
+ -t /home/ejl62/eben_s/template_matching/pytom/pytom_tutorial/templates/60S.mrc \
+ -m /home/ejl62/eben_s/template_matching/pytom/pytom_tutorial/templates/mask_60S.mrc \
+ -v /home/ejl62/eben_s/template_matching/pytom/pytom_tutorial/dataset/tomo200528_100.mrc \
+ -d /home/ejl62/eben_s/template_matching/qd_tm_test_results \
  --particle-diameter 300 \
- -a -60 60 \
+ -a -45 45 \
  --low-pass 35 \
  --amplitude 0.08 \
  --spherical 2.7 \
@@ -63,13 +49,13 @@ pytom_match_template.py \
 
 if [ $? -eq 0 ]; then
     pytom_estimate_roc.py \
-    -j /home/ejl62/template_matching_shared/qd_tm_test_results/tomo200528_100_job.json \
+    -j /home/ejl62/eben_s/template_matching/qd_tm_test_results/tomo200528_100_job.json \
     -n 800 \
     -r 8 \
     --bins 16 \
-    --crop-plot  > /home/ejl62/template_matching_shared/qd_tm_test_results/tomo200528_100_roc.log
+    --crop-plot  > /home/ejl62/eben_s/template_matching/qd_tm_test_results/tomo200528_100_roc.log
 
-    pytom_extract_candidates.py -j /home/ejl62/template_matching_shared/qd_tm_test_results/tomo200528_100_job.json \
+    pytom_extract_candidates.py -j /home/ejl62/eben_s/template_matching/qd_tm_test_results/tomo200528_100_job.json \
     -n 300 \
     -r 8
  else 
