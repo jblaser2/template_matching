@@ -16,7 +16,7 @@
 
 #SBATCH --mem 10G
 
-#SBATCH --job-name=qdtm_45
+#SBATCH --job-name=qdtm_50
 
   
 
@@ -38,7 +38,7 @@ pytom_match_template.py \
  -v /home/ejl62/eben_s/template_matching/pytom/pytom_tutorial/dataset/tomo200528_100.mrc \
  -d /home/ejl62/eben_s/template_matching/qd_tm_test_results \
  --particle-diameter 300 \
- -a -45 45 \
+ -a -50 50 \
  --low-pass 35 \
  --amplitude 0.08 \
  --spherical 2.7 \
@@ -57,7 +57,8 @@ if [ $? -eq 0 ]; then
 
     pytom_extract_candidates.py -j /home/ejl62/eben_s/template_matching/qd_tm_test_results/tomo200528_100_job.json \
     -n 300 \
-    -r 8
+    -r 8 \
+    -c 0.5
  else 
     echo "Shot through the heart, and you're to blame. Template matching failed again."
  fi
