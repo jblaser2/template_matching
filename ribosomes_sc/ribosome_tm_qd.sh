@@ -8,9 +8,9 @@
 
 #SBATCH --nodes=1 # number of nodes
 
-#SBATCH --gpus=a100:1
+#SBATCH --gpus=v100:1
 
-#SBATCH --qos=standby
+#SBATCH --qos=msg
 
 #SBATCH --export=NONE
 
@@ -49,13 +49,13 @@ pytom_match_template.py \
 
 if [ $? -eq 0 ]; then
     pytom_estimate_roc.py \
-    -j /home/ejl62/eben_s/template_matching/qd_tm_test_results/tomo200528_100_job.json \
+    -j /home/ejl62/eben_s/template_matching/qd_tm_test_results/45/tomo200528_100_job.json \
     -n 800 \
     -r 8 \
     --bins 16 \
-    --crop-plot  > /home/ejl62/eben_s/template_matching/qd_tm_test_results/tomo200528_100_roc.log
+    --crop-plot  > //home/ejl62/eben_s/template_matching/qd_tm_test_results/45/tomo200528_100_roc.log
 
-    pytom_extract_candidates.py -j /home/ejl62/eben_s/template_matching/qd_tm_test_results/tomo200528_100_job.json \
+    pytom_extract_candidates.py -j /home/ejl62/eben_s/template_matching/qd_tm_test_results/45/tomo200528_100_job.json \
     -n 300 \
     -r 8 \
     -c 0.4
