@@ -6,13 +6,19 @@
 
 #SBATCH --nodes=1 # number of nodes
 
-#SBATCH --gpus=a100:1
+#SBATCH --gpus=v100:1
 
-#SBATCH --qos=standby
+#SBATCH --qos=msg
 
 #SBATCH --export=NONE
 
 #SBATCH --mem 15G
+
+#SBATCH --job-name="reconstruct_tomo"
+
+#SBATCH --mail-user=ejl62@byu.edu   # email address
+#SBATCH --mail-type=END
+#SBATCH --mail-type=FAIL
 
 
 # Set the max number of threads to use for programs using OpenMP. Should be <= ppn. Does nothing if the program doesn't use OpenMP.
@@ -21,6 +27,8 @@ export PATH=/apps/spack/root/opt/spack/linux-rhel9-haswell/gcc-13.2.0/cuda-12.4.
 export LD_LIBRARY_PATH=/apps/spack/root/opt/spack/linux-rhel9-haswell/gcc-13.2.0/cuda-12.4.1-pw6cogp5nuczn2qcgqnw6lvqdznny2ef/lib64:${LD_LIBRARY_PATH} 
 
 # LOAD MODULES, INSERT CODE, AND RUN YOUR PROGRAMS HERE
+module load spack
+module load cuda
 
 tomogram_path="/home/ejl62/eben_s/reconstruct_tomo/test_tomos/"
 output_path="/home/ejl62/eben_s/reconstruct_tomo/test1_out/"
@@ -31,5 +39,5 @@ batchruntomo -di "$direct_file" \
     -root "$root_name" \
     -current "$tomogram_path" \
     -deliver "$output_path" \
-    -gpus Linux:1 \
-    -cpus Linux:4 
+    -gpus 1 \
+    -cpus 4
