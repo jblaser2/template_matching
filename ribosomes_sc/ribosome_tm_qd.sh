@@ -26,7 +26,7 @@ export PATH=/apps/spack/root/opt/spack/linux-rhel9-haswell/gcc-13.2.0/cuda-12.4.
 export LD_LIBRARY_PATH=/apps/spack/root/opt/spack/linux-rhel9-haswell/gcc-13.2.0/cuda-12.4.1-pw6cogp5nuczn2qcgqnw6lvqdznny2ef/lib64:${LD_LIBRARY_PATH}
 
 # LOAD MODULES, INSERT CODE, AND RUN YOUR PROGRAMS HERE 
-module load spack
+module load spack/release
 module load miniconda3
 module load cuda
 
