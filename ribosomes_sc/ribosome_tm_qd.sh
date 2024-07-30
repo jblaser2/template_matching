@@ -1,6 +1,6 @@
 #!/bin/bash --login
 
-  
+angle=45
 
 #SBATCH --time=0:20:00 # walltime
 
@@ -16,7 +16,7 @@
 
 #SBATCH --mem 10G
 
-#SBATCH --job-name=qdtm_45
+#SBATCH --job-name=qdtm_"$angle"
 
   
 
@@ -26,7 +26,6 @@ export PATH=/apps/spack/root/opt/spack/linux-rhel9-haswell/gcc-13.2.0/cuda-12.4.
 export LD_LIBRARY_PATH=/apps/spack/root/opt/spack/linux-rhel9-haswell/gcc-13.2.0/cuda-12.4.1-pw6cogp5nuczn2qcgqnw6lvqdznny2ef/lib64:${LD_LIBRARY_PATH}
 
 # LOAD MODULES, INSERT CODE, AND RUN YOUR PROGRAMS HERE 
-module load spack/release
 module load miniconda3
 module load cuda
 
@@ -36,9 +35,9 @@ pytom_match_template.py \
  -t /home/ejl62/eben_s/template_matching/pytom/pytom_tutorial/templates/60S.mrc \
  -m /home/ejl62/eben_s/template_matching/pytom/pytom_tutorial/templates/mask_60S.mrc \
  -v /home/ejl62/eben_s/template_matching/pytom/pytom_tutorial/dataset/tomo200528_100.mrc \
- -d /home/ejl62/eben_s/template_matching/qd_tm_test_results/45 \
+ -d "/home/ejl62/eben_s/template_matching/qd_tm_test_results/$angle" \
  --particle-diameter 300 \
- -a -45 45 \
+ -a -$angle $angle \
  --low-pass 35 \
  --amplitude 0.08 \
  --spherical 2.7 \
@@ -49,13 +48,13 @@ pytom_match_template.py \
 
 if [ $? -eq 0 ]; then
     pytom_estimate_roc.py \
-    -j /home/ejl62/eben_s/template_matching/qd_tm_test_results/45/tomo200528_100_job.json \
+    -j "/home/ejl62/eben_s/template_matching/qd_tm_test_results/$angle/tomo200528_100_job.json" \
     -n 800 \
     -r 8 \
     --bins 16 \
-    --crop-plot  > //home/ejl62/eben_s/template_matching/qd_tm_test_results/45/tomo200528_100_roc.log
+    --crop-plot  > "//home/ejl62/eben_s/template_matching/qd_tm_test_results/$angle/tomo200528_100_roc.log"
 
-    pytom_extract_candidates.py -j /home/ejl62/eben_s/template_matching/qd_tm_test_results/45/tomo200528_100_job.json \
+    pytom_extract_candidates.py -j "/home/ejl62/eben_s/template_matching/qd_tm_test_results/$angle/tomo200528_100_job.json" \
     -n 300 \
     -r 8 \
     -c 0.4
