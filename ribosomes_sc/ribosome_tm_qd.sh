@@ -1,7 +1,5 @@
 #!/bin/bash --login
 
-angle=45
-
 #SBATCH --time=0:20:00 # walltime
 
 #SBATCH --ntasks=2 # number of processor cores (i.e. tasks)
@@ -16,7 +14,7 @@ angle=45
 
 #SBATCH --mem 10G
 
-#SBATCH --job-name=qdtm_"$angle"
+#SBATCH --job-name=qdtm_45
 
   
 
@@ -28,6 +26,8 @@ export LD_LIBRARY_PATH=/apps/spack/root/opt/spack/linux-rhel9-haswell/gcc-13.2.0
 # LOAD MODULES, INSERT CODE, AND RUN YOUR PROGRAMS HERE 
 module load miniconda3
 module load cuda
+
+angle=45
 
 source activate pytom
 
