@@ -27,15 +27,18 @@ export LD_LIBRARY_PATH=/apps/spack/root/opt/spack/linux-rhel9-haswell/gcc-13.2.0
 module load miniconda3
 module load cuda
 
+# set root directory to however you are accessing the shared template matching folder
+root_dir="/home/ejl62/eben_s/template_matching"
+# set hyperparameters
 angle=45
 
 source activate pytom
 
 pytom_match_template.py \
- -t /home/ejl62/eben_s/template_matching/pytom/pytom_tutorial/templates/60S.mrc \
- -m /home/ejl62/eben_s/template_matching/pytom/pytom_tutorial/templates/mask_60S.mrc \
- -v /home/ejl62/eben_s/template_matching/pytom/pytom_tutorial/dataset/tomo200528_100.mrc \
- -d "/home/ejl62/eben_s/template_matching/qd_tm_test_results/$angle" \
+ -t "$root_dir/pytom/pytom_tutorial/templates/60S.mrc" \
+ -m "$root_dir/pytom/pytom_tutorial/templates/mask_60S.mrc" \
+ -v "$root_dir/pytom/pytom_tutorial/dataset/tomo200528_100.mrc" \
+ -d "$root_dir/qd_tm_test_results/$angle" \
  --particle-diameter 300 \
  -a -$angle $angle \
  --low-pass 35 \
@@ -48,16 +51,14 @@ pytom_match_template.py \
 
 if [ $? -eq 0 ]; then
     pytom_estimate_roc.py \
-    -j "/home/ejl62/eben_s/template_matching/qd_tm_test_results/$angle/tomo200528_100_job.json" \
+    -j "$root_dir/qd_tm_test_results/$angle/tomo200528_100_job.json" \
     -n 800 \
     -r 8 \
     --bins 16 \
-    --crop-plot  > "//home/ejl62/eben_s/template_matching/qd_tm_test_results/$angle/tomo200528_100_roc.log"
+    --crop-plot  > "/$root_dir/qd_tm_test_results/$angle/tomo200528_100_roc.log"
 
-    pytom_extract_candidates.py -j "/home/ejl62/eben_s/template_matching/qd_tm_test_results/$angle/tomo200528_100_job.json" \
+    pytom_extract_candidates.py -j "$root_dir/qd_tm_test_results/$angle/tomo200528_100_job.json" \
     -n 300 \
     -r 8 \
     -c 0.4
- else 
-    echo "Shot through the heart, and you're to blame. Template matching failed again."
  fi
