@@ -44,15 +44,13 @@ pytom_match_template.py \
 
 if [ $? -eq 0 ]; then
     pytom_estimate_roc.py \
-    -j "/home/ejl62/eben_s/template_matching/qd_tm_test_results/$angle/tomo200528_100_job.json" \
     -j "$root_dir/qd_tm_test_results/$angle/tomo200528_100_job.json" \
     -n 800 \
     -r 8 \
     --bins 16 \
-    --crop-plot  > "//home/ejl62/eben_s/template_matching/qd_tm_test_results/$angle/tomo200528_100_roc.log"
+    --crop-plot  > "/$root_dir/qd_tm_test_results/$angle/tomo200528_100_roc.log"
     --crop-plot  > "/$root_dir/qd_tm_test_results/$angle/tomo200528_100_roc.log"
 
-    pytom_extract_candidates.py -j "/home/ejl62/eben_s/template_matching/qd_tm_test_results/$angle/tomo200528_100_job.json" \
     pytom_extract_candidates.py -j "$root_dir/qd_tm_test_results/$angle/tomo200528_100_job.json" \
     -n 300 \
     -r 8 \
@@ -60,3 +58,4 @@ if [ $? -eq 0 ]; then
  else 
     echo "Shot through the heart, and you're to blame. Template matching failed again."
  fi
+
